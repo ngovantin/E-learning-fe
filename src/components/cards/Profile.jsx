@@ -40,7 +40,7 @@ const Profile = ({ onClose }) => {
       <div className='flex items-center gap-2 border-b-[0.5px] border-[#c9c9c9] pb-3'>
         <img
           className='h-15 rounded-full'
-          src={user.avatar}
+          src={user?.avatar}
           alt=''
         />
         <div className='mx-3'>
@@ -49,7 +49,7 @@ const Profile = ({ onClose }) => {
           <p className='text-[9px] font-light'>{user?.createdAt.split('T')[0]}</p>
         </div>
       </div>
-      <p onClick={handleLogOut} className='pt-3 text-center text-[12px] font-semibold'>
+      <p onClick={handleLogOut} className='pt-3 text-center text-[12px] font-semibold cursor-pointer'>
         Log out
       </p>
     </motion.div>
