@@ -5,9 +5,10 @@ import { useEffect, useState } from 'react';
 import { useTimer } from 'react-timer-hook';
 
 const ExamControls = ({ data, userAnswers, setShowResult, showResult }) => {
+  console.log({ data, userAnswers, setShowResult, showResult })
   const [questionStas, setQuestionStas] = useState({});
   const time = new Date();
-  time.setSeconds(time.getSeconds() + 300);
+  time.setSeconds(time.getSeconds() + data.duration);
 
   const { seconds, minutes, start, pause, isRunning } = useTimer({
     expiryTimestamp: time,
@@ -95,7 +96,7 @@ const ExamControls = ({ data, userAnswers, setShowResult, showResult }) => {
           ))}
         </div>
       )}
-    </motion.div>
+      </motion.div>
   );
 };
 export default ExamControls;

@@ -1,12 +1,15 @@
-import { faClock, faComments, faUserPen } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faClock, faComments, faUserPen } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from 'next/link';
 
-const Exam = () => {
+const Exam = ({ name, year, image, id }) => {
   return (
     <div className='inline-block rounded-2xl border border-[#f0f0f0] bg-white'>
-      <img src='test_2024.png' alt='' className='rounded-t-2xl object-contain' />
+      <img src={image} alt='' className='rounded-t-2xl object-contain' />
       <div className='p-[1.7vw] text-[10px]'>
-        <h3 className='text-lg font-semibold'>2024 Practice Set TOEIC Test 1</h3>
+        <h3 className='text-lg font-semibold'>
+          {year} Practice Set TOEIC {name}
+        </h3>
         <div className='flex flex-wrap gap-2 pt-5 pb-3 text-gray-500'>
           <div className='flex h-3 gap-1'>
             <FontAwesomeIcon icon={faClock} />
@@ -24,11 +27,13 @@ const Exam = () => {
         <div className='flex flex-wrap gap-2 pb-[1.9vw] text-gray-500'>
           <p>7 sections</p>|<p>200 questions</p>
         </div>
-        <button className='p-1 w-full rounded-full border border-[#12a483] font-bold text-[#12a483] text-sm'>
-          View more
-        </button>
+        <Link href={`/toeic-test/${id}`}>
+          <button className='w-full rounded-full border border-[#12a483] p-1 text-sm font-bold text-[#12a483]'>
+            View more
+          </button>
+        </Link>
       </div>
     </div>
-  )
-}
-export default Exam
+  );
+};
+export default Exam;
