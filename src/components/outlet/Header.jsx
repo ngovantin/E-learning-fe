@@ -1,18 +1,18 @@
 'use client';
 import { faBars, faCircleXmark, faEarthAfrica } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { use, useState } from 'react';
-import AuthForm from '../AuthForm';
-import { useSelector } from 'react-redux';
-import Profile from '../cards/Profile';
 import { AnimatePresence } from 'motion/react';
 import Link from 'next/link';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import Profile from '../cards/Profile';
+import AuthForm from '../popup/AuthForm';
 
 const Header = () => {
-  const [authForm, setAuthForm] = useState(false);
   const [menu, setMenu] = useState(false);
-  const user = useSelector((state) => state.auth.currentUser?.user);
   const [profile, setProfile] = useState(false);
+  const [authForm, setAuthForm] = useState(false);
+  const user = useSelector((state) => state.auth.currentUser?.user);
   return (
     <header className='fixed z-50 flex h-14 w-full justify-between bg-transparent px-[6vw] text-sm font-medium backdrop-blur-2xl lg:h-15'>
       <Link href={'/'} className='flex items-center'>

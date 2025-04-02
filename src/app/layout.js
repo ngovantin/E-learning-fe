@@ -3,8 +3,7 @@ import './globals.css';
 import ReduxProvider from '@/libs/redux/ReduxProvider';
 import Header from '@/components/outlet/Header';
 import Footer from '@/components/outlet/Footer';
-
-
+import Bubble from '@/components/outlet/Bubble';
 
 const poppinsFont = Poppins({
   subsets: ['latin'],
@@ -20,13 +19,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={`${poppinsFont.className} antialiased scroll-smooth`}>
+      <body className={`${poppinsFont.className} scroll-smooth antialiased`}>
         <ReduxProvider>
-          <Header/>
+          <Header />
           {children}
-          <Footer/>
-          </ReduxProvider>
-        </body>
+          <Bubble/>
+          <Footer />
+        </ReduxProvider>
+      </body>
     </html>
   );
 }
