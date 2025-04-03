@@ -23,7 +23,6 @@ const AuthForm = ({ authForm, setAuthForm }) => {
     handleSubmit,
     watch,
     reset,
-    formState: { errors }
   } = useForm();
   const password = watch('password');
 
@@ -141,8 +140,6 @@ const AuthForm = ({ authForm, setAuthForm }) => {
             <p className='text-[#ff723d]'>{type ? 'Login' : 'Register'}</p>
           </div>
         </motion.form>
-
-        {/* <form onClick={(e) => e.stopPropagation()} action='' className='h-150 w-[90%] rounded-3xl bg-white'></form> */}
       </motion.div>
     </GoogleOAuthProvider>
   );

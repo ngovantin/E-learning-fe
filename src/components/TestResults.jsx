@@ -13,7 +13,7 @@ const TestResults = () => {
     const fetchData = async () => {
       if (!token) return;
       try {
-        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/testResult/getAll`, {
+        const res = await axios.get(`v1/testResult/getAll`, {
           headers: { token: `Bearer ${token}` }
         });
         setTestResults(res.data.slice(0, 4));

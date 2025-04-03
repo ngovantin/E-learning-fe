@@ -9,7 +9,7 @@ import TestResults from '@/components/TestResults';
 import useFetch from '@/Hooks/useFetch';
 
 const page = () => {
-  const tests = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/test-toeic`);
+  const tests = useFetch(`/v1/test-toeic`);
   return (
     <div className='bg-[#F5F7FB]'>
       <div className='relative'>

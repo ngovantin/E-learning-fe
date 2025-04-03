@@ -22,8 +22,8 @@ const PARTS = [
 const page = () => {
   const [currentPart, setCurenPart] = useState(1);
   const { id } = useParams();
-  const { data: resultData } = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/testResult/${id}`, true);
-  const { data } = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/test-toeic/get-one/${resultData?.test}`, true);
+  const { data: resultData } = useFetch(`/v1/testResult/${id}`, true);
+  const { data } = useFetch(`/v1/test-toeic/get-one/${resultData?.test}`, true);
   console.log(data);
   return (
 

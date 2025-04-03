@@ -8,7 +8,7 @@ import { useState } from 'react';
 const page = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { data, isLoading, error } = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/blog?page=${currentPage}`);
+  const { data, isLoading, error } = useFetch(`/v1/blog?page=${currentPage}`);
 
   const totalPages = Math.ceil(data?.blogsTotal / 10);
 
@@ -23,7 +23,7 @@ const page = () => {
     }
   };
 
-  console.log({ data, isLoading, error });
+  console.log(data);
 
   return (
     <div className='min-h-[100vh] px-5 md:px-15 2xl:px-[12vw]'>

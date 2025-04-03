@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBan, faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 const ResultOverview = ({ data }) => {
-  console.log(data)
   return (
     <div className='gap-2 rounded-2xl bg-[#fff] p-5 text-sm text-gray-700 shadow-lg'>
       <div className='grid flex-2 grid-cols-3 gap-1 text-center md:flex md:flex-col md:gap-5'>
@@ -31,7 +30,7 @@ const ResultOverview = ({ data }) => {
       <div>
         <div>
           <p>
-            Correct rate: <strong>{data?.correct/200*100}%</strong>
+            Correct rate: <strong>{Math.floor(data?.correct/200*100)}%</strong>
           </p>
           <p>
             Score: <strong>{data?.score}</strong>

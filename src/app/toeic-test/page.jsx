@@ -44,7 +44,7 @@ const DECSRIPTION = `This page provides TOEIC practice tests to help you improve
 
 const page = () => {
   const [publishedYear, setPublishedYear] = useState(null);
-  const tests = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/test-toeic`);
+  const tests = useFetch(`/v1/test-toeic`);
   const filteredTest = tests.data?.tests.filter((test) => {
     if (!publishedYear) return test;
     else return test.publishYear === publishedYear;

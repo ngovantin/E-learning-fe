@@ -8,7 +8,7 @@ import { useParams } from 'next/navigation';
 
 const page = () => {
   const { id } = useParams();
-  const { data } = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/vocab/${id}`, true);
+  const { data } = useFetch(`/v1/vocab/${id}`, true);
 
   const handlePractices = () =>{
     alert("This feature is currently under development.")

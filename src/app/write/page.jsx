@@ -21,14 +21,13 @@ const page = () => {
     try {
       if (!title && !thumbnail && !content) return;
       const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/blog/`,
+        `/v1/blog/`,
         { title, thumbnail, content, snippet },
         {
           headers: { token: `Bearer ${token}` }
         }
       );
       router.push(`/blog/${res.data.blog._id}`)
-      console.log(res.data)
     } catch (error) {
       console.log(error)
     }

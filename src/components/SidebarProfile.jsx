@@ -19,7 +19,7 @@ const SidebarProfile = ({ joinDate, name, avatar, publishedDate, totalComment = 
               <FontAwesomeIcon icon={faThumbsUp} /> 0
             </p>
             <p>
-              <FontAwesomeIcon icon={faComment} />{' '}
+              <FontAwesomeIcon icon={faComment} />
               {totalComment}
             </p>
           </div>

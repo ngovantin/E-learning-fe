@@ -23,7 +23,7 @@ const PARTS = [
 const page = () => {
   const [currentPart, setCurenPart] = useState(1);
   const { id } = useParams();
-  const { data } = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/test-toeic/get-one/${id}`, true);
+  const { data } = useFetch(`/v1/test-toeic/get-one/${id}`, true);
 
   return (
     <TestProvider>
@@ -33,7 +33,7 @@ const page = () => {
           width='100%'
           height='120'
           allow='autoplay'
-          src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${data?.audio}&color=%23919191&inverse=false&auto_play=false&show_user=true`}
+          src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${data?.audio}&color=%23919191&inverse=false&auto_play=true`}
         ></iframe>
         <div className='my-5 lg:flex lg:gap-8'>
           <div className='md:grid md:gap-5 lg:block lg:flex-1 lg:self-start xl:grid-cols-2'>

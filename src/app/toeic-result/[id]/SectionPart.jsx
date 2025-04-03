@@ -1,7 +1,6 @@
 import Question from '@/components/cards/Question';
 
 const SectionPart = ({ sections, userAnswers, correctAnswers }) => {
-  console.log(correctAnswers)
   return (
     <div>
       {sections?.map((section) => (

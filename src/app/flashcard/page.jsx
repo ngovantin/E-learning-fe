@@ -10,7 +10,7 @@ const DESCRIPTION = `Supercharge your language learning with smart flashcards on
 
 
 const page = () => {
-  const { data: flashcards } = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/flashcard`, true);
+  const { data: flashcards } = useFetch(`/v1/flashcard`, true);
 
   return (
     <ListLayout title={TITLE} description={DESCRIPTION}>

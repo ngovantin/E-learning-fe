@@ -7,7 +7,7 @@ import './main.css';
 
 const page = () => {
   const { id } = useParams();
-  const { data, isLoading, error } = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/blog/${id}`);
+  const { data, isLoading, error } = useFetch(`/v1/blog/${id}`);
   console.log({ data, isLoading, error });
   return (
     <div className='min-h-[100vh] px-5 md:px-15 2xl:px-[12vw]'>

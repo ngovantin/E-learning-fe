@@ -7,7 +7,7 @@ const TITLE = 'Your Exam Performance Overview';
 const DECSRIPTION = `View all your past exam results in one place. Track your scores, analyze your performance, and monitor your progress over time. Use detailed insights to identify strengths and areas for improvement, helping you achieve better results in future exams!`;
 
 const page = () => {
-  const { data } = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/testResult/getAll`, true);
+  const { data } = useFetch(`/v1/testResult/getAll`, true);
   console.log(data);
   return (
     <ListLayout title={TITLE} description={DECSRIPTION}>

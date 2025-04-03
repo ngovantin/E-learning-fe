@@ -21,24 +21,20 @@ const Header = () => {
       <div className='py-3 md:py-2.5' />
       <div className='flex items-center gap-10'>
         <ul
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0 }}
-          key='box'
           onClick={() => setMenu(false)}
           className={`xl:gap-8 xl:text-[16px] ${menu ? '' : 'hidden'} absolute top-15 right-5 items-center gap-4 rounded-lg bg-white py-3 pr-7 pl-9 text-right text-xs text-[#656766] shadow-xl md:static md:flex md:bg-transparent md:text-xs md:shadow-none lg:text-sm`}
         >
           <li className='font-semibold text-[#ff723d]'>
-            <a href=''>Home </a>
+            <Link href='/'>Home</Link>
           </li>
           <li className='py-1.5'>
-            <a href='#course'>Courses</a>
+            <Link href='/blog'>Blog</Link>
           </li>
           <li className='py-1.5'>
-            <a href='#about'>About us</a>
+            <Link href='/toeic-test'>Toeic</Link>
           </li>
           <li className='py-1.5'>
-            <a href='#exams'>Exams</a>
+            <Link href='/flashcard'>Flashcard</Link>
           </li>
           <li className='py-1.5'>
             <a href='#contact'>Contact</a>
