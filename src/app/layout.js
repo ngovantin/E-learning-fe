@@ -4,6 +4,7 @@ import ReduxProvider from '@/libs/redux/ReduxProvider';
 import Header from '@/components/outlet/Header';
 import Footer from '@/components/outlet/Footer';
 import Bubble from '@/components/outlet/Bubble';
+import SmoothScrollWrapper from '@/components/SmoothScrollWrapper';
 
 const poppinsFont = Poppins({
   subsets: ['latin'],
@@ -21,10 +22,12 @@ export default function RootLayout({ children }) {
     <html lang='en'>
       <body className={`${poppinsFont.className} scroll-smooth antialiased`}>
         <ReduxProvider>
-          <Header />
-          {children}
-          <Bubble/>
-          <Footer />
+          <SmoothScrollWrapper>
+            <Header />
+            {children}
+            <Bubble />
+            <Footer />
+          </SmoothScrollWrapper>
         </ReduxProvider>
       </body>
     </html>

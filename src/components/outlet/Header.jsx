@@ -14,7 +14,7 @@ const Header = () => {
   const [authForm, setAuthForm] = useState(false);
   const user = useSelector((state) => state.auth.currentUser?.user);
   return (
-    <header className='fixed z-50 flex h-14 w-full justify-between bg-transparent px-[6vw] text-sm font-medium backdrop-blur-2xl lg:h-15'>
+    <header className='fixed z-20 flex h-14 w-full justify-between bg-transparent px-[6vw] text-sm font-medium backdrop-blur-2xl lg:h-15'>
       <Link href={'/'} className='flex items-center'>
         <img src='/logo.png' alt='' className='h-6' />
       </Link>

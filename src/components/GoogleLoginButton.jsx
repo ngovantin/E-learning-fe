@@ -9,7 +9,6 @@ const GoogleLoginButton = ({setAuthForm}) => {
   const dispatch = useDispatch();
   const login = useGoogleLogin({
     onSuccess: (tokenResponse) => {
-      console.log(tokenResponse);
       googleLogin(tokenResponse.access_token, dispatch);
     },
     onError: () => console.log('Login Failed')
@@ -18,7 +17,7 @@ const GoogleLoginButton = ({setAuthForm}) => {
   return (
     <button
       onClick={() => {login(); setAuthForm(false)}}
-      className='custom-btn mx-9 my-3 flex h-10 items-center justify-center gap-5 rounded-full border border-gray-400 lg:text-lg'
+      className='custom-btn mx-9 my-3 flex h-10 items-center justify-center gap-5 rounded-full border border-gray-400 lg:text-lg text-gray-600'
     >
       <FontAwesomeIcon icon={faGoogle} />
       <p>Login with Google</p>

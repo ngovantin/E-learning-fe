@@ -4,24 +4,29 @@ import Exam from '@/components/cards/Exam';
 import Feedback from '@/components/Feedback';
 import Introduction from '@/components/Introduction';
 import LearningCategory from '@/components/LearningCategory';
+import AuthForm from '@/components/popup/AuthForm';
+import WelocmeVideo from '@/components/popup/WelocmeVideo';
 import Reward from '@/components/Reward';
 import TestResults from '@/components/TestResults';
 import useFetch from '@/Hooks/useFetch';
+import { AnimatePresence } from 'motion/react';
+import { useState } from 'react';
 
 const page = () => {
   const tests = useFetch(`/v1/test-toeic`);
+
+  
   return (
-    <div className='bg-[#F5F7FB]'>
+    <div className='relative bg-[#F5F7FB]'>
       <div className='relative'>
         <div className='2xl:[12vw] flex items-center justify-between bg-[#F8EBE9] pt-14 xl:px-[7vw]'>
-          <Introduction />
+          <Introduction/>
           <img
             src='wallpaper.png'
-            alt=''
             className='h-[90vw] w-[45vw] object-cover object-left-top lg:h-[60vw] xl:h-[45vw]'
           />
         </div>
-        <div className='absolute bottom-[-1] h-32 w-[100%] bg-gradient-to-b from-transparent to-[#F8EBE9]'></div>
+        <div className='pointer-events-none absolute bottom-[-1] h-32 w-[100%] bg-gradient-to-b from-transparent to-[#F8EBE9]'></div>
       </div>
       <TestResults />
       <div className='flex h-20 items-center justify-center bg-gradient-to-b from-[#F8EBE9] to-[#F5F7FB]'>

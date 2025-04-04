@@ -48,14 +48,14 @@ const AuthForm = ({ authForm, setAuthForm }) => {
         animate={{ opacity: 1}}
         exit={{ opacity: 0}}
         onClick={() => setAuthForm(false)}
-        className={`absolute top-0 right-0 left-0 flex h-[100vh] items-center justify-center bg-[#00000044] backdrop-blur-[2.5px]`}
+        className={`z-30 fixed top-0 right-0 left-0 flex h-[100vh] items-center justify-center bg-[#00000044] backdrop-blur-[2.5px]`}
       >
         <motion.form
           onSubmit={handleSubmit(handleRegister)}
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0 }}
-          className='flex w-[85%] flex-col rounded-3xl bg-white px-7 py-15 md:w-[55%] lg:w-[45%] xl:w-[35%]'
+          className='flex w-[85%] flex-col rounded-3xl bg-white px-7 py-15 md:w-[55%] lg:w-[45%] xl:w-[35%] max-w-[500px]'
           key='box'
           onClick={(e) => e.stopPropagation()}
         >

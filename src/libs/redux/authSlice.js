@@ -20,7 +20,6 @@ const authSlice = createSlice({
       state.isFetching = false;
       state.error = true;
     },
-
   }
 });
 

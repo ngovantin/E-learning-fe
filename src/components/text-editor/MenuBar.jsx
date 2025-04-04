@@ -26,7 +26,6 @@ const MenuBar = ({ editor }) => {
     return null;
   }
   const handleImageUpload = (result) =>{
-    console.log(result.info.secure_url)
     editor.chain().focus().setImage({ src: result.info.secure_url }).run()
   }
   const options = [

@@ -7,7 +7,7 @@ const authUser = async (user, dispatch, type) => {
   try {
     const res = await axios.post(`/v1/auth/${type}`, user);
     dispatch(authSuccess(res.data));
-    window.location.reload();
+    // window.location.reload();
   } catch (error) {
     dispatch(authFailed());
   }
@@ -20,7 +20,6 @@ const googleLogin = async (token, dispatch) => {
         Authorization: `Bearer ${token}`
       }
     });
-    console.log(res.data);
     window.location.reload();
     dispatch(authSuccess(res.data));
   } catch (error) {

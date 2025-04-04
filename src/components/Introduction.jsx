@@ -5,9 +5,13 @@ import { AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Edit from './popup/Edit';
+import WelocmeVideo from './popup/WelocmeVideo';
+import AuthForm from './popup/AuthForm';
 
 const Introduction = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const [authForm, setAuthForm] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
   const user = useSelector((state) => state.auth.currentUser?.user);
   const today = new Date();
 
@@ -32,11 +36,17 @@ const Introduction = () => {
         your review results. Start your journey to mastering knowledge today!
       </p>
       <div className={`${user && 'hidden'} mt-5 flex items-center gap-2 font-semibold lg:gap-4`}>
-        <button className='flex items-center gap-1 rounded-full bg-[#12a483] px-4 py-1 text-[8px] text-white md:text-[13px] lg:px-7 lg:py-2 lg:text-[15px] xl:py-4 2xl:px-10 2xl:text-2xl'>
+        <button
+          onClick={() => {
+            setAuthForm(true);
+          }}
+          className='flex cursor-pointer items-center gap-1 rounded-full bg-[#12a483] px-4 py-1 text-[8px] text-white md:text-[13px] lg:px-7 lg:py-2 lg:text-[15px] xl:py-4 2xl:px-10 2xl:text-2xl'
+        >
           <p>Start now</p>
           <FontAwesomeIcon icon={faArrowRight} className='h-2 lg:h-4 2xl:h-6' />{' '}
         </button>
         <FontAwesomeIcon
+          onClick={()=>{setShowVideo(true)}}
           icon={faPlay}
           className='h-5 rounded-full bg-[#ff723d] p-1.5 md:h-7 md:p-2.5 lg:h-9 2xl:h-16 2xl:p-5'
         />
@@ -69,6 +79,8 @@ const Introduction = () => {
           <AnimatePresence>{showPopup && <Edit onClose={() => setShowPopup(false)} />}</AnimatePresence>
         </div>
       )}
+      <AnimatePresence initial={false}>{showVideo ? <WelocmeVideo setShowVideo={setShowVideo} /> : null}</AnimatePresence>
+      <AnimatePresence initial={false}>{authForm ? <AuthForm setAuthForm={setAuthForm} /> : null}</AnimatePresence>
     </div>
   );
 };

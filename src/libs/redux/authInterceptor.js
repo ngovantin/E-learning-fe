@@ -5,7 +5,6 @@ import { authSuccess } from './authSlice';
 const refreshToken = async () => {
   try {
     const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/refresh`, {}, { withCredentials: true });
-    console.log(res)
     return res.data;
   } catch (error) {
     console.log(error);
