@@ -1,9 +1,16 @@
 'use client';
 import BlogCard from '@/components/cards/BlogCard';
 import useFetch from '@/Hooks/useFetch';
-import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import ListLayout from '@/layout/ListLayout';
+import { faAngleLeft, faAngleRight, faPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from 'next/link';
 import { useState } from 'react';
+
+const TITLE = 'Featured Blogs';
+
+const DESCRIPTION =  `A curated collection of articles sharing insights and experiences on self-learning programming online, along
+                      with in-depth discussions on various web development techniques, best practices, and industry trends.`
 
 const page = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,20 +30,11 @@ const page = () => {
     }
   };
 
-  console.log(data);
-
   return (
-    <div className='min-h-[100vh] px-5 md:px-15 2xl:px-[12vw]'>
-      <div className='h-15 border-b lg:h-[61px]' />
-      <div>
-        <h2 className='my-4 xl:text-2xl'>Featured Blogs</h2>
-        <p className='text-xs leading-relaxed font-light 2xl:text-sm'>
-          A curated collection of articles sharing insights and experiences on self-learning programming online, along
-          with in-depth discussions on various web development techniques, best practices, and industry trends.
-        </p>
-      </div>
-      <div className='my-5 lg:flex lg:gap-8'>
+      <ListLayout title={TITLE} description={DESCRIPTION}>
+        
         <div className='flex flex-col gap-y-3 lg:flex-[3.5]'>
+          <Link href="/write" className='bg-[#12a483] text-center py-3 rounded-full font-bold text-white cursor-pointer'>New Blog <FontAwesomeIcon icon={faPen}/></Link>  
           {data?.blogs.map((blog) => (
             <BlogCard key={blog._id} data={blog} />
           ))}
@@ -56,12 +54,9 @@ const page = () => {
             <FontAwesomeIcon className={`${currentPage === totalPages ? 'text-gray-300 cursor-none':''} cursor-pointer`} icon={faAngleRight} onClick={()=>{handleMovePage('right')}} />
           </div>
         </div>
-        <div className='md:grid md:grid-cols-2 md:gap-5 lg:sticky lg:top-[5rem] lg:block lg:flex-1 lg:self-start'>
-          <img className='mb-10 rounded-xl' src='/blog-1.png' />
-          <img className='mb-10 rounded-xl' src='/blog-2.png' />
-        </div>
-      </div>
-    </div>
+
+      </ListLayout>
+    
   );
 };
 export default page;

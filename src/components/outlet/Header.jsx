@@ -27,17 +27,12 @@ const Header = () => {
           <li className='font-semibold text-[#ff723d]'>
             <Link href='/'>Home</Link>
           </li>
+          <li className='py-1.5'>{user ? <Link href='/blog'>Blog</Link> : <a href='#course'>Course</a>}</li>
+          <li className='py-1.5'>{user ? <Link href='/toeic-test'>Toeic</Link> : <a href='#about'>About</a>}</li>
+          <li className='py-1.5'>{user ? <Link href='/flashcard'>Flashcard</Link> : <a href='#exam'>Exam</a>}</li>
+          <li className='py-1.5'>{user ? <Link href='/toeic-result'>Result</Link> : <a href='#contact'>Contact</a>}</li>
           <li className='py-1.5'>
-            <Link href='/blog'>Blog</Link>
-          </li>
-          <li className='py-1.5'>
-            <Link href='/toeic-test'>Toeic</Link>
-          </li>
-          <li className='py-1.5'>
-            <Link href='/flashcard'>Flashcard</Link>
-          </li>
-          <li className='py-1.5'>
-            <a href='#contact'>Contact</a>
+            
           </li>
         </ul>
         <div className='flex items-center gap-4'>

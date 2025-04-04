@@ -12,13 +12,11 @@ export default function SmoothScrollWrapper({ children }) {
       direction: 'vertical',
       smoothTouch: false,
     });
-
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
-
     return () => lenis.destroy();
   }, []);
 

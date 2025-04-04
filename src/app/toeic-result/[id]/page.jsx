@@ -51,7 +51,6 @@ const page = () => {
                 </p>
               ))}
             </div>
-            
             {currentPart === 1 && <Part1 pictures={data?.part1} userAnswers={resultData?.userAnswer} correctAnswers={data?.answer}/>}
             {currentPart === 2 && <Part2 userAnswers={resultData?.userAnswer} correctAnswers={data?.answer}/>}
             {currentPart === 3 && <SectionPart sections={data?.part3} userAnswers={resultData?.userAnswer} correctAnswers={data?.answer}/>}

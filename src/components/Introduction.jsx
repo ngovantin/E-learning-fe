@@ -5,7 +5,7 @@ import { AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Edit from './popup/Edit';
-import WelocmeVideo from './popup/WelocmeVideo';
+import WelcomeVideo from './popup/WelcomeVideo';
 import AuthForm from './popup/AuthForm';
 
 const Introduction = () => {
@@ -79,7 +79,7 @@ const Introduction = () => {
           <AnimatePresence>{showPopup && <Edit onClose={() => setShowPopup(false)} />}</AnimatePresence>
         </div>
       )}
-      <AnimatePresence initial={false}>{showVideo ? <WelocmeVideo setShowVideo={setShowVideo} /> : null}</AnimatePresence>
+      <AnimatePresence initial={false}>{showVideo ? <WelcomeVideo setShowVideo={setShowVideo} /> : null}</AnimatePresence>
       <AnimatePresence initial={false}>{authForm ? <AuthForm setAuthForm={setAuthForm} /> : null}</AnimatePresence>
     </div>
   );

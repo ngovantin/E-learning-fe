@@ -4,27 +4,19 @@ import Exam from '@/components/cards/Exam';
 import Feedback from '@/components/Feedback';
 import Introduction from '@/components/Introduction';
 import LearningCategory from '@/components/LearningCategory';
-import AuthForm from '@/components/popup/AuthForm';
-import WelocmeVideo from '@/components/popup/WelocmeVideo';
 import Reward from '@/components/Reward';
 import TestResults from '@/components/TestResults';
 import useFetch from '@/Hooks/useFetch';
-import { AnimatePresence } from 'motion/react';
-import { useState } from 'react';
 
 const page = () => {
   const tests = useFetch(`/v1/test-toeic`);
 
-  
   return (
     <div className='relative bg-[#F5F7FB]'>
       <div className='relative'>
-        <div className='2xl:[12vw] flex items-center justify-between bg-[#F8EBE9] pt-14 xl:px-[7vw]'>
-          <Introduction/>
-          <img
-            src='wallpaper.png'
-            className='h-[90vw] w-[45vw] object-cover object-left-top lg:h-[60vw] xl:h-[45vw]'
-          />
+        <div className='2xl:[12vw] flex items-center justify-between bg-[#F8EBE9] pt-15 xl:px-[7vw]'>
+          <Introduction />
+          <img src='wallpaper.png' className='h-[90vw] w-[45vw] object-cover object-left-top lg:h-[60vw] xl:h-[45vw]' />
         </div>
         <div className='pointer-events-none absolute bottom-[-1] h-32 w-[100%] bg-gradient-to-b from-transparent to-[#F8EBE9]'></div>
       </div>
@@ -90,9 +82,9 @@ const page = () => {
       <div className='flex h-25 items-center justify-center bg-gradient-to-b from-[#F8EBE9] to-[#F5F7FB]'>
         <p className='inline-block rotate-12 rounded-full bg-[#12a483] px-4 py-1 font-bold text-white'>Practice</p>
       </div>
-      <LearningCategory id='exams' itemType={'Exam'} categories={[2022, 2023, 2024]}>
+      <LearningCategory id='exam' itemType={'Exam'} categories={[2022, 2023, 2024]}>
         {tests.data?.tests.slice(0, 4).map((test) => (
-          <Exam key={test._id} image={test.image} name={test.name} year={test.publishYear} />
+          <Exam key={test._id} image={test.image} name={test.name} year={test.publishYear} id={test._id}/>
         ))}
       </LearningCategory>
       <div className='flex h-25 items-center justify-center bg-gradient-to-b from-[#F5F7FB] to-[#F8EBE9]' />

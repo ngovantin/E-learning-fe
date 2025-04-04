@@ -2,6 +2,9 @@
 import Exam from '@/components/cards/Exam';
 import useFetch from '@/Hooks/useFetch';
 import ListLayout from '@/layout/ListLayout';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from 'next/link';
 import { useState } from 'react';
 
 const PUBLISHED_YEARS = [
@@ -51,7 +54,8 @@ const page = () => {
   });
   return (
     <ListLayout title={TITLE} description={DECSRIPTION}>
-      <div className='mb-5 flex'>
+      <div className='mb-5 md:flex md:justify-between md:items-center'>
+      <div className='flex'>
         {PUBLISHED_YEARS.map((year) => (
           <p
             onClick={() => setPublishedYear(year.value)}
@@ -61,6 +65,8 @@ const page = () => {
             {year.label}
           </p>
         ))}
+      </div>
+        <Link href={'/ai-test-generator'} className='cursor-pointer bg-[#ff723d] px-3 py-2 rounded-full text-white font-semibold text-sm'>AI-Generated Exam</Link>
       </div>
       <div className='grid grid-cols-2 gap-4 md:grid-cols-3 2xl:grid 2xl:grid-cols-4'>
         {filteredTest?.map((test) => (

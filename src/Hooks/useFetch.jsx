@@ -21,7 +21,6 @@ const useFetch = (url, auth = false) => {
         setData(res.data);
       } catch (error) {
         setError(error);
-        dispatch(authSuccess(null))
       } finally {
         setIsLoading(false);
       }

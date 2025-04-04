@@ -23,6 +23,7 @@ const AuthForm = ({ authForm, setAuthForm }) => {
     handleSubmit,
     watch,
     reset,
+    formState: {errors}
   } = useForm();
   const password = watch('password');
 
@@ -61,7 +62,9 @@ const AuthForm = ({ authForm, setAuthForm }) => {
         >
           <h2 className='mb-4 text-2xl font-bold md:text-3xl'>{type ? 'Sign up' : 'Sign in'}</h2>
           <div className='my-6 text-[12px] md:text-[13px]'>
-            <div className={`${type ? '' : 'hidden'} mb-5 flex h-8 items-center gap-4`}>
+            {
+              !type && 
+            <div className={`mb-5 flex h-8 items-center gap-4`}>
               <FontAwesomeIcon icon={faUser} />
               <input
                 {...register('firstName', { required: type && 'first name is require!' })}
@@ -76,6 +79,7 @@ const AuthForm = ({ authForm, setAuthForm }) => {
                 className='h-5 w-[45%] border-b-1 border-gray-400 outline-none'
               />
             </div>
+            }
             <div className='mb-5 flex h-8 items-center gap-4'>
               <FontAwesomeIcon icon={faEnvelope} />
               <input
@@ -107,7 +111,9 @@ const AuthForm = ({ authForm, setAuthForm }) => {
                 placeholder='Enter your password!'
               />
             </div>
-            <div className={`${type ? '' : 'hidden'} mb-5 flex h-8 items-center gap-4`}>
+            {
+              !type &&
+            <div className={`mb-5 flex h-8 items-center gap-4`}>
               <FontAwesomeIcon icon={faLock} />
               <input
                 {...register('comfirmPass', {
@@ -120,6 +126,7 @@ const AuthForm = ({ authForm, setAuthForm }) => {
                 placeholder='Confirm your password!'
               />
             </div>
+            }
             <input
               type='submit'
               value={type ? 'Register' : 'Login'}

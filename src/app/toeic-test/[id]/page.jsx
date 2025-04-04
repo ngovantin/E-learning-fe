@@ -43,7 +43,7 @@ const page = () => {
             <div className='mb-5 flex flex-wrap'>
               {PARTS.map((part) => (
                 <p
-                  onClick={() => setCurenPart(part.value)}
+                  onClick={() => setCurenPart(part.value)}npm 
                   className={`${currentPart === part.value ? 'scale-120 bg-[#12a483]' : 'bg-[#65b8a4]'} cursor-pointer px-4 py-2 font-bold text-white`}
                   key={part.value}
                 >

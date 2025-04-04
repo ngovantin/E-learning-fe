@@ -1,5 +1,5 @@
 import * as motion from 'motion/react-client';
-const WelocmeVideo = ({ setShowVideo }) => {
+const WelcomeVideo = ({ setShowVideo }) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -24,4 +24,4 @@ const WelocmeVideo = ({ setShowVideo }) => {
     </motion.div>
   );
 };
-export default WelocmeVideo;
+export default WelcomeVideo;
