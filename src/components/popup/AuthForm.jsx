@@ -129,7 +129,7 @@ const AuthForm = ({ authForm, setAuthForm }) => {
             }
             <input
               type='submit'
-              value={type ? 'Register' : 'Login'}
+              value={!type ? 'Register' : 'Login'}
               className='mx-[10%] mt-[7%] w-[80%] rounded-full bg-[#12a483] py-2 text-white'
             />
           </div>

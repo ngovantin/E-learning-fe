@@ -2,12 +2,13 @@
 import useFetch from '@/Hooks/useFetch';
 import { useSelector } from 'react-redux';
 import TestResultCard from './cards/TestResultCard';
+import Loader from './Loader';
 
 const TestResults = () => {
   const token = useSelector((state) => state.auth.currentUser?.accessToken);
-  
-  const {data: testResults} = useFetch('v1/testResult/getAll', true)
-  
+
+  const { isLoading, data: testResults } = useFetch('v1/testResult/getAll', true);
+
   return (
     <div className={`${token ? '' : 'hidden'} bg-[#F8EBE9] px-[6vw]`}>
       <h1 className='py-4 font-semibold text-[#383838] md:pb-5 md:text-2xl'>Recent Test Log</h1>
@@ -16,6 +17,7 @@ const TestResults = () => {
           return <TestResultCard key={testResult._id} data={testResult} />;
         })}
       </div>
+      <Loader isLoading={isLoading} />
     </div>
   );
 };

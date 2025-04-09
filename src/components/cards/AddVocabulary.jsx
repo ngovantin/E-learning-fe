@@ -36,7 +36,7 @@ const AddVocabulary = () => {
     try {
       if (!data.word || !data.meaning) return;
       axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/vocab`,
+        `/v1/vocab`,
         { flashcardId, ...data },
         { headers: { token: `Bearer ${token}` } }
       );

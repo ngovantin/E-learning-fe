@@ -1,9 +1,8 @@
 'use client';
 import Exam from '@/components/cards/Exam';
+import Loader from '@/components/Loader';
 import useFetch from '@/Hooks/useFetch';
 import ListLayout from '@/layout/ListLayout';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -47,32 +46,38 @@ const DECSRIPTION = `This page provides TOEIC practice tests to help you improve
 
 const page = () => {
   const [publishedYear, setPublishedYear] = useState(null);
-  const tests = useFetch(`/v1/test-toeic`);
-  const filteredTest = tests.data?.tests.filter((test) => {
+  const { data, isLoading } = useFetch(`/v1/test-toeic`);
+  const filteredTest = data?.tests.filter((test) => {
     if (!publishedYear) return test;
     else return test.publishYear === publishedYear;
   });
   return (
     <ListLayout title={TITLE} description={DECSRIPTION}>
-      <div className='mb-5 md:flex md:justify-between md:items-center'>
-      <div className='flex'>
-        {PUBLISHED_YEARS.map((year) => (
-          <p
-            onClick={() => setPublishedYear(year.value)}
-            className={`${publishedYear === year.value ? 'scale-120 bg-[#12a483]' : 'bg-[#65b8a4]'} cursor-pointer px-4 py-2 font-bold text-white`}
-            key={year.value}
-          >
-            {year.label}
-          </p>
-        ))}
-      </div>
-        <Link href={'/ai-test-generator'} className='cursor-pointer bg-[#ff723d] px-3 py-2 rounded-full text-white font-semibold text-sm'>AI-Generated Exam</Link>
+      <div className='mb-5 md:flex md:items-center md:justify-between'>
+        <div className='flex'>
+          {PUBLISHED_YEARS.map((year) => (
+            <p
+              onClick={() => setPublishedYear(year.value)}
+              className={`${publishedYear === year.value ? 'scale-120 bg-[#12a483]' : 'bg-[#65b8a4]'} cursor-pointer px-4 py-2 font-bold text-white`}
+              key={year.value}
+            >
+              {year.label}
+            </p>
+          ))}
+        </div>
+        <Link
+          href={'/ai-test-generator'}
+          className='cursor-pointer rounded-full bg-[#ff723d] px-3 py-2 text-sm font-semibold text-white'
+        >
+          AI-Generated Exam
+        </Link>
       </div>
       <div className='grid grid-cols-2 gap-4 md:grid-cols-3 2xl:grid 2xl:grid-cols-4'>
         {filteredTest?.map((test) => (
           <Exam key={test._id} image={test.image} name={test.name} year={test.publishYear} id={test._id} />
         ))}
       </div>
+      <Loader isLoading={isLoading} />
     </ListLayout>
   );
 };

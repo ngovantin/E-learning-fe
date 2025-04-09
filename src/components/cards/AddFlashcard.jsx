@@ -28,7 +28,7 @@ const AddFlashcard = () => {
   const handleAddFlashcard = async (data) => {
     try {
       if(!data.name) return;
-      axios.post(`${process.env.NEXT_PUBLIC_API_URL}/flashcard`, data, { headers: { token: `Bearer ${token}` } });
+      axios.post(`/v1/flashcard`, data, { headers: { token: `Bearer ${token}` } });
       setToggle(false);
       window.location.reload();
     } catch (error) {

@@ -12,11 +12,12 @@ const Dictionary = () => {
   const [result, setResult] = useState();
   const [fetch, setFetch] = useState(0);
   const [flashcardId, setFlashcardId] = useState('');
-  const { data: flashcards } = useFetch(`${process.env.NEXT_PUBLIC_API_URL}/flashcard/get`, true);
+  const { data: flashcards } = useFetch(`/v1/flashcard`, true);
   const token = useSelector((state) => state.auth.currentUser?.accessToken);
   const handleLookup = async () => {
     try {
       setFetch(0);
+      if(!vocab) return;
       const res = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${vocab}`);
       setResult(res.data[0]);
       setFetch(1);
@@ -32,7 +33,7 @@ const Dictionary = () => {
     if (!flashcardId) return;
     try {
       axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/vocab/add`,
+        `/v1/vocab`,
         { word, meaning, phonetic, flashcardId },
         { headers: { token: `Bearer ${token}` } }
       );

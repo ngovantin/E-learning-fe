@@ -1,6 +1,7 @@
 'use client';
 import AddFlashcard from '@/components/cards/AddFlashcard';
 import Flashcard from '@/components/cards/Flashcard';
+import Loader from '@/components/Loader';
 import useFetch from '@/Hooks/useFetch';
 import ListLayout from '@/layout/ListLayout';
 
@@ -10,7 +11,7 @@ const DESCRIPTION = `Supercharge your language learning with smart flashcards on
 
 
 const page = () => {
-  const { data: flashcards } = useFetch(`/v1/flashcard`, true);
+  const { data: flashcards, isLoading } = useFetch(`/v1/flashcard`, true);
 
   return (
     <ListLayout title={TITLE} description={DESCRIPTION}>
@@ -29,6 +30,7 @@ const page = () => {
             />
           ))}
       </div>
+      <Loader isLoading={isLoading}/>
     </ListLayout>
   );
 };

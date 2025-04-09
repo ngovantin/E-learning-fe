@@ -4,13 +4,13 @@ import Exam from '@/components/cards/Exam';
 import Feedback from '@/components/Feedback';
 import Introduction from '@/components/Introduction';
 import LearningCategory from '@/components/LearningCategory';
+import Loader from '@/components/Loader';
 import Reward from '@/components/Reward';
 import TestResults from '@/components/TestResults';
 import useFetch from '@/Hooks/useFetch';
 
 const page = () => {
-  const tests = useFetch(`/v1/test-toeic`);
-
+  const { data: tests, isLoading } = useFetch(`/v1/test-toeic`);
   return (
     <div className='relative bg-[#F5F7FB]'>
       <div className='relative'>
@@ -83,9 +83,10 @@ const page = () => {
         <p className='inline-block rotate-12 rounded-full bg-[#12a483] px-4 py-1 font-bold text-white'>Practice</p>
       </div>
       <LearningCategory id='exam' itemType={'Exam'} categories={[2022, 2023, 2024]}>
-        {tests.data?.tests.slice(0, 4).map((test) => (
+        {tests?.tests.slice(0, 4).map((test) => (
           <Exam key={test._id} image={test.image} name={test.name} year={test.publishYear} id={test._id}/>
         ))}
+        <Loader isLoading={isLoading}/>
       </LearningCategory>
       <div className='flex h-25 items-center justify-center bg-gradient-to-b from-[#F5F7FB] to-[#F8EBE9]' />
     </div>

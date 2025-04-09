@@ -27,7 +27,7 @@ const Flashcard = ({ name, createdDate, vocabCount, description, language, flash
   const handleUpdate = async (data) => {
     try {
       await axios.patch(
-        `${process.env.NEXT_PUBLIC_API_URL}/flashcard`,
+        `/v1/flashcard`,
         { flashcardId, name: data.name, description: data.description, language: data.language },
         {
           headers: {
@@ -43,7 +43,7 @@ const Flashcard = ({ name, createdDate, vocabCount, description, language, flash
 
   const handleDelete = async () =>{
     try {
-      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/flashcard/${flashcardId}`,{headers:{
+      await axios.delete(`/v1/flashcard/${flashcardId}`,{headers:{
         token: `Bearer ${token}`
       }})
       window.location.reload();

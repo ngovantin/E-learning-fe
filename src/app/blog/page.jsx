@@ -1,5 +1,6 @@
 'use client';
 import BlogCard from '@/components/cards/BlogCard';
+import Loader from '@/components/Loader';
 import useFetch from '@/Hooks/useFetch';
 import ListLayout from '@/layout/ListLayout';
 import { faAngleLeft, faAngleRight, faPen } from '@fortawesome/free-solid-svg-icons';
@@ -38,6 +39,7 @@ const page = () => {
           {data?.blogs.map((blog) => (
             <BlogCard key={blog._id} data={blog} />
           ))}
+          <Loader isLoading={isLoading}/>
           <div className='flex items-center justify-center gap-3 mb-5'>
             <FontAwesomeIcon className={`${currentPage === 1 ? 'text-gray-300 cursor-none':''} cursor-pointer`} icon={faAngleLeft} onClick={()=>{handleMovePage('left')}}/>
             {Array.from({ length: totalPages }, (_, index) => (
