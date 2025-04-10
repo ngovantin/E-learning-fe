@@ -29,7 +29,7 @@ const Profile = ({ onClose }) => {
       transition={{ duration: 0.2 }}
     >
       <div className='flex items-center gap-2 border-b-[0.5px] border-[#c9c9c9] pb-3'>
-        <img className='h-15 rounded-full' src={user?.avatar} />
+        <img className='h-15 rounded-full' src={user?.avatar || '/no_avatar.png'} />
         <div className='mx-3'>
           <h3 className='my-1 font-bold capitalize'>{user?.name}</h3>
           <p className='text-[9px] font-light'>{user?.email}</p>

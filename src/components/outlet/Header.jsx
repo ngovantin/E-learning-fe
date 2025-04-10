@@ -53,7 +53,6 @@ const Header = () => {
               setProfile(true);
             }}
             src={user?.avatar}
-            alt=''
             className='h-12 rounded-full'
           />
           <AnimatePresence>{profile && <Profile onClose={() => setProfile(false)} />}</AnimatePresence>

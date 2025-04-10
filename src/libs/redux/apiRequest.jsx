@@ -7,9 +7,11 @@ const authUser = async (user, dispatch, type) => {
   try {
     const res = await axios.post(`/v1/auth/${type}`, user);
     dispatch(authSuccess(res.data));
+    return res;
     // window.location.reload();
   } catch (error) {
     dispatch(authFailed());
+    return error.response
   }
 };
 const googleLogin = async (token, dispatch) => {
@@ -20,14 +22,13 @@ const googleLogin = async (token, dispatch) => {
         Authorization: `Bearer ${token}`
       }
     });
-    window.location.reload();
+    // window.location.reload();
     dispatch(authSuccess(res.data));
   } catch (error) {
     dispatch(authFailed());
   }
 };
 const logOut = async (dispatch, token, axiosJWT)=>{
-  console.log(token)
     dispatch(authStart())
     try {
         await axiosJWT.post(`/v1/auth/logout`,{},{
