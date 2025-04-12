@@ -5,7 +5,7 @@ const nextConfig = {
     return [
       {
         source: '/v1/:path*',
-        destination: 'http://localhost:8000/v1/:path*'
+        destination: 'https://e-learning-be-axf3.onrender.com/v1/:path*'
       }
     ];
   }

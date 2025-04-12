@@ -1,14 +1,13 @@
 'use client';
-import Header from '@/components/outlet/Header';
+import ExamControls from '@/components/cards/ExamControls';
+import Question from '@/components/cards/Question';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import testGenerator from './generator';
-import { AnimatePresence, motion } from 'framer-motion';
-import Question from '@/components/cards/Question';
-import ExamControls from '@/components/cards/ExamControls';
 import { SyncLoader } from 'react-spinners';
+import testGenerator from './generator';
 
 const PART_5_TYPES = [
   { id: 1, value: 'noun', label: 'Noun' },

@@ -15,7 +15,7 @@ const Edit = ({ onClose }) => {
   const handleUpdate = async ({ newDate, newTarget }) => {
     try {
       const res = await axios.patch(
-        `${process.env.NEXT_PUBLIC_API_URL}/user/updateExamInfor`,
+        `v1/user/updateExamInfor`,
         { newDate, newTarget },
         { headers: { token: `Bearer ${currentUser?.accessToken}` } }
       );

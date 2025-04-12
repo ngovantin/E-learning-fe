@@ -30,7 +30,7 @@ const TestProvider = ({ children }) => {
     try {
       console.log({test, timeSpent, userAnswers})
       const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/testResult/take-full`,
+        `/v1/testResult/take-full`,
         {
           test,
           timeSpent,

@@ -29,8 +29,9 @@ const RegisterForm = ({setAuthForm}) => {
         if (res.status === 200) setCurrentStep(2);
       } else if (action === 'register') {
         const { firstName, lastName, password, email } = user;
-        await authUser({ name: `${firstName} ${lastName}`, password, email, otp }, dispatch, 'register');
-        setAuthForm(false);
+        const res = await authUser({ name: `${firstName} ${lastName}`, password, email, otp }, dispatch, 'register');
+        if(res.status === 201) setAuthForm(false)
+        console.log(res)
       }
       setErrorMessage('');
     } catch (error) {

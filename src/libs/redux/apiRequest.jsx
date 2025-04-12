@@ -11,7 +11,7 @@ const authUser = async (user, dispatch, type) => {
     // window.location.reload();
   } catch (error) {
     dispatch(authFailed());
-    return error.response
+    return error.response;
   }
 };
 const googleLogin = async (token, dispatch) => {
