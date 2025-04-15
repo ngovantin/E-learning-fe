@@ -27,9 +27,8 @@ const LearningCategory = ({ children, itemType, categories, id }) => {
         </div>
       </div>
       <div className='text-center'>
-        <div className='my-9 grid grid-cols-2 justify-between gap-2 gap-y-5 text-left lg:grid-cols-3 xl:grid-cols-4 xl:gap-5 2xl:grid-cols-5'>
           {children}
-        </div>
+
         <button className='mx-auto rounded-full bg-[#12A483] px-7 py-3 font-semibold text-white'>
           {`See All ${itemType}s`}
         </button>
