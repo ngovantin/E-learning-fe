@@ -18,7 +18,7 @@ const TestContent = ({data, userAnswers, setUserAnswers, showResult, isLoading, 
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: '-100%', opacity: 0 }}
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0.3 }}
-            className='text-gray-600 md:w-[550px] lg:w-[700px] 2xl:flex 2xl:w-[1100px]'
+            className='text-gray-600 md:w-[550px] lg:w-full 2xl:flex'
           >
             <div className={`${data.passages ? '2xl:flex-[2]' : ''}`}>
               <h3 className='my-3 font-bold'>{data.title}</h3>
@@ -41,7 +41,7 @@ const TestContent = ({data, userAnswers, setUserAnswers, showResult, isLoading, 
                   showResult={showResult}
                   setUserAnswers={setUserAnswers}
                   userAnswers={userAnswers}
-                  index={index}
+                  index={index + 1}
                 />
               ))}
             </div>
