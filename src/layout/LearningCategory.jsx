@@ -1,7 +1,8 @@
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from 'next/link';
 
-const LearningCategory = ({ children, itemType, categories, id }) => {
+const LearningCategory = ({ children, itemType, categories, id, href }) => {
   return (
     <div id={id} className='px-[6vw] pt-[8vw]'>
       <div className='flex justify-between'>
@@ -13,7 +14,7 @@ const LearningCategory = ({ children, itemType, categories, id }) => {
         </div>
         <div className='flex h-8 w-[70vw] items-center justify-between rounded-full bg-white pl-3 text-[8px] shadow-lg md:h-12 md:text-[13px] lg:w-[50%] xl:h-[60px] xl:w-[40%] xl:pl-6 xl:text-lg'>
           <input type='text' placeholder={`Search ${itemType}s`} className='w-[40%] outline-none' />
-          <select name='' id='' className='w-[35%] font-semibold outline-none'>
+          <select className='w-[35%] font-semibold outline-none'>
             <option value=''>All items</option>
             {categories.map((category, index) => {
               return (
@@ -29,9 +30,9 @@ const LearningCategory = ({ children, itemType, categories, id }) => {
       <div className='text-center'>
           {children}
 
-        <button className='mx-auto rounded-full bg-[#12A483] px-7 py-3 font-semibold text-white'>
+        <Link href={href} className='mx-auto rounded-full bg-[#12A483] px-7 py-3 font-semibold text-white'>
           {`See All ${itemType}s`}
-        </button>
+        </Link>
       </div>
     </div>
   );

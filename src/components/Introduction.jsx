@@ -1,16 +1,15 @@
 'use client';
+import { openPopup } from '@/libs/redux/popupSlice';
 import { faArrowRight, faAward, faCalendar, faClock, faPenToSquare, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AnimatePresence } from 'motion/react';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Edit from './popup/Edit';
 import WelcomeVideo from './popup/WelcomeVideo';
-import AuthForm from './popup/AuthForm';
 
 const Introduction = () => {
   const [showPopup, setShowPopup] = useState(false);
-  const [authForm, setAuthForm] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const user = useSelector((state) => state.auth.currentUser?.user);
   const today = new Date();
@@ -22,6 +21,7 @@ const Introduction = () => {
     return remainingDays;
   };
 
+  const dispatch = useDispatch();
   return (
     <div className='relative'>
       <div className='2xl:[12vw] flex items-center justify-between bg-[#F8EBE9] pt-15 xl:px-[7vw]'>
@@ -40,7 +40,7 @@ const Introduction = () => {
           <div className={`${user && 'hidden'} mt-5 flex items-center gap-2 font-semibold lg:gap-4`}>
             <button
               onClick={() => {
-                setAuthForm(true);
+                dispatch(openPopup());
               }}
               className='flex cursor-pointer items-center gap-1 rounded-full bg-[#12a483] px-4 py-1 text-[8px] text-white md:text-[13px] lg:px-7 lg:py-2 lg:text-[15px] xl:py-4 2xl:px-10 2xl:text-2xl'
             >
@@ -86,8 +86,7 @@ const Introduction = () => {
           <AnimatePresence initial={false}>
             {showVideo ? <WelcomeVideo setShowVideo={setShowVideo} /> : null}
           </AnimatePresence>
-          <AnimatePresence initial={false}>{authForm ? <AuthForm setAuthForm={setAuthForm} /> : null}</AnimatePresence>
-        </div>{' '}
+        </div>
         <img src='wallpaper.png' className='h-[90vw] w-[45vw] object-cover object-left-top lg:h-[60vw] xl:h-[45vw]' />
       </div>
       <div className='pointer-events-none absolute bottom-[-1] h-32 w-[100%] bg-gradient-to-b from-transparent to-[#F8EBE9]'></div>

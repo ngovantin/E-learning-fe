@@ -1,4 +1,5 @@
 import { authUser } from '@/libs/redux/apiRequest';
+import { closePopup } from '@/libs/redux/popupSlice';
 import { faEnvelope, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
@@ -7,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import OTPInput from 'react-otp-input';
 import { useDispatch } from 'react-redux';
 
-const RegisterForm = ({setAuthForm}) => {
+const RegisterForm = () => {
   const [otp, setOtp] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [currentStep, setCurrentStep] = useState(1);
@@ -30,7 +31,7 @@ const RegisterForm = ({setAuthForm}) => {
       } else if (action === 'register') {
         const { firstName, lastName, password, email } = user;
         const res = await authUser({ name: `${firstName} ${lastName}`, password, email, otp }, dispatch, 'register');
-        if(res.status === 201) setAuthForm(false)
+        if(res.status === 201) dispatch(closePopup());
         console.log(res)
       }
       setErrorMessage('');
@@ -77,7 +78,7 @@ const RegisterForm = ({setAuthForm}) => {
           <p className='ml-7 h-3 text-xs text-red-500'>{errors.email ? errors.email.message : ''}</p>
         </div>
         <div>
-          <div className='flex h-8 items-center gap-4'>
+          <div className='flex h-8 items-center gap-4 mb-2'>
             <FontAwesomeIcon icon={faLock} />
             <input
               {...register('password', {
@@ -127,7 +128,6 @@ const RegisterForm = ({setAuthForm}) => {
           <OTPInput
             value={otp}
             onChange={(val) => {
-              // Lọc giữ lại chỉ số
               const numericOnly = val.replace(/\D/g, '');
               setOtp(numericOnly);
             }}

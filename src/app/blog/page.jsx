@@ -1,11 +1,11 @@
 'use client';
 import BlogCard from '@/components/cards/BlogCard';
 import Loader from '@/components/Loader';
+import ProjectedLink from '@/components/ProjectedLink';
 import useFetch from '@/Hooks/useFetch';
 import ListLayout from '@/layout/ListLayout';
 import { faAngleLeft, faAngleRight, faPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Link from 'next/link';
 import { useState } from 'react';
 
 const TITLE = 'Featured Blogs';
@@ -32,10 +32,10 @@ const page = () => {
   };
 
   return (
-      <ListLayout title={TITLE} description={DESCRIPTION}>
+      <ListLayout title={TITLE} description={DESCRIPTION} side='l'>
         
         <div className='flex flex-col gap-y-3 lg:flex-[3.5]'>
-          <Link href="/write" className='bg-[#12a483] text-center py-3 rounded-full font-bold text-white cursor-pointer'>New Blog <FontAwesomeIcon icon={faPen}/></Link>  
+          <ProjectedLink className='bg-[#12a483] text-center py-3 rounded-full font-bold text-white cursor-pointer' href='/write'>New Blog <FontAwesomeIcon icon={faPen}/></ProjectedLink>
           {data?.blogs.map((blog) => (
             <BlogCard key={blog._id} data={blog} />
           ))}

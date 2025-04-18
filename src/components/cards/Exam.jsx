@@ -29,7 +29,7 @@ const Exam = ({ name, year, image, id }) => {
         </div>
         <Link href={`/toeic-test/${id}`}>
           <button className='w-full rounded-full border border-[#12a483] p-1 text-sm font-bold text-[#12a483]'>
-            View more
+            Take now
           </button>
         </Link>
       </div>

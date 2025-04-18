@@ -1,11 +1,12 @@
 import { authUser } from '@/libs/redux/apiRequest';
+import { closePopup } from '@/libs/redux/popupSlice';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
-const LoginForm = ({ setAuthForm }) => {
+const LoginForm = () => {
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState('');
   const {
@@ -22,7 +23,7 @@ const LoginForm = ({ setAuthForm }) => {
         return;
       } 
       setErrorMessage('');
-      setAuthForm(false);
+      dispatch(closePopup());
     } catch (error) {
       console.log(error);
     }
@@ -60,7 +61,6 @@ const LoginForm = ({ setAuthForm }) => {
       />
       <div className='flex justify-center mb-2'>
       <p className='h-3 text-red-400'>{errorMessage}</p>
-
       </div>
     </form>
   );

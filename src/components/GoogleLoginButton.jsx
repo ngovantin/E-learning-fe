@@ -1,11 +1,12 @@
 'use client';
 import { googleLogin } from '@/libs/redux/apiRequest';
+import { closePopup } from '@/libs/redux/popupSlice';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useGoogleLogin } from '@react-oauth/google';
 import { useDispatch } from 'react-redux';
 
-const GoogleLoginButton = ({setAuthForm}) => {
+const GoogleLoginButton = () => {
   const dispatch = useDispatch();
   const login = useGoogleLogin({
     onSuccess: (tokenResponse) => {
@@ -16,7 +17,7 @@ const GoogleLoginButton = ({setAuthForm}) => {
 
   return (
     <button
-      onClick={() => {login(); setAuthForm(false)}}
+      onClick={() => {login(); dispatch(closePopup())}}
       className='custom-btn mx-9 my-3 flex h-10 items-center justify-center gap-5 rounded-full border border-gray-400 lg:text-lg text-gray-600'
     >
       <FontAwesomeIcon icon={faGoogle} />

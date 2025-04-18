@@ -5,17 +5,19 @@ import { useState } from 'react';
 import GoogleLoginButton from '../GoogleLoginButton';
 import LoginForm from '../form/LoginForm';
 import RegisterForm from '../form/RegisterForm';
+import { useDispatch } from 'react-redux';
+import { closePopup } from '@/libs/redux/popupSlice';
 
-const AuthForm = ({ setAuthForm }) => {
+const AuthForm = () => {
   const [type, setType] = useState(true);
-
+  const dispatch = useDispatch();
   return (
     <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_OAUTH_CLIENTID}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        onClick={() => setAuthForm(false)}
+        onClick={() => dispatch(closePopup())}
         className={`fixed top-0 right-0 left-0 z-30 flex h-[100vh] items-center justify-center bg-[#00000044] backdrop-blur-[2.5px]`}
       >
         <motion.div
@@ -27,10 +29,10 @@ const AuthForm = ({ setAuthForm }) => {
           onClick={(e) => e.stopPropagation()}
         >
           <h2 className='mb-4 text-2xl font-bold md:text-3xl'>{type ? 'Sign up' : 'Sign in'}</h2>
-          {type ? <LoginForm setAuthForm={setAuthForm} /> : <RegisterForm setAuthForm={setAuthForm} />}
+          {type ? <LoginForm/> : <RegisterForm/>}
           <div className='flex flex-col'>
             <p className='text-center text-xs'>Or continue with:</p>
-            <GoogleLoginButton setAuthForm={setAuthForm} />
+            <GoogleLoginButton/>
             <div
               onClick={() => {
                 setType(!type);
@@ -38,7 +40,7 @@ const AuthForm = ({ setAuthForm }) => {
               className='flex cursor-pointer justify-center gap-1 text-center font-mono text-xs underline md:text-sm lg:text-[14px]'
             >
               <p>{type ? 'Already have an account?' : "Dont't have an account?"}</p>
-              <p className='text-[#ff723d]'>{type ? 'Login' : 'Register'}</p>
+              <p className='text-[#ff723d]'>{!type ? 'Login' : 'Register'}</p>
             </div>
           </div>
         </motion.div>

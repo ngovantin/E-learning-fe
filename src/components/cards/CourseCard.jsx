@@ -1,9 +1,10 @@
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from 'next/link';
 
 const CourseCard = () => {
   return (
-    <div className='inline-block rounded-xl border border-[#f0f0f0] bg-white'>
+    <Link href={'/developing'} className='inline-block rounded-xl border border-[#f0f0f0] bg-white'>
       <img
         src='https://turnerenglish.com.au/wp-content/uploads/2023/02/Beginners-OL.jpg'
         alt=''
@@ -29,7 +30,7 @@ const CourseCard = () => {
           <p className='font-bold text-xs text-[#ff723d]'>$10.00</p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 export default CourseCard;

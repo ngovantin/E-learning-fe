@@ -1,20 +1,25 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './authSlice';
+import popupReducer from './popupSlice';
 import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // Lưu vào localStorage
+import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
 
 const persistConfig = {
-  key: 'root',
+  key: 'auth',
   storage,
+  whitelist: ['auth'],
 };
 
 const rootReducer = combineReducers({
-  auth: persistReducer(persistConfig, authReducer),
+  auth: authReducer,
+  popup: popupReducer,
 });
 
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
@@ -25,10 +30,6 @@ const store = configureStore({
 
 export const persistor = persistStore(store);
 export default store;
-
-
-
-
 
 
 // import { configureStore } from '@reduxjs/toolkit';
