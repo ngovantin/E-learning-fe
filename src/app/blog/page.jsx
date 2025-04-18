@@ -1,7 +1,7 @@
 'use client';
 import BlogCard from '@/components/cards/BlogCard';
 import Loader from '@/components/Loader';
-import ProjectedLink from '@/components/ProjectedLink';
+import ProjectedLink from '@/components/ProtectedLink';
 import useFetch from '@/Hooks/useFetch';
 import ListLayout from '@/layout/ListLayout';
 import { faAngleLeft, faAngleRight, faPen } from '@fortawesome/free-solid-svg-icons';

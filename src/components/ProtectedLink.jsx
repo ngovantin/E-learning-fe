@@ -2,7 +2,7 @@ import { openPopup } from '@/libs/redux/popupSlice';
 import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 
-const ProjectedLink = ({ href, className, children }) => {
+const ProtectedLink = ({ href, className, children }) => {
   const user = useSelector((state) => state.auth.currentUser?.user);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -16,5 +16,5 @@ const ProjectedLink = ({ href, className, children }) => {
     </button>
   );
 };
-export default ProjectedLink;
+export default ProtectedLink;
  

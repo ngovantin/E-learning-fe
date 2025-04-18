@@ -1,6 +1,7 @@
 import { faClock, faComments, faUserPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
+import ProtectedLink from '../ProtectedLink';
 
 const Exam = ({ name, year, image, id }) => {
   return (
@@ -27,11 +28,10 @@ const Exam = ({ name, year, image, id }) => {
         <div className='flex flex-wrap gap-2 pb-[1.9vw] text-gray-500'>
           <p>7 sections</p>|<p>200 questions</p>
         </div>
-        <Link href={`/toeic-test/${id}`}>
-          <button className='w-full rounded-full border border-[#12a483] p-1 text-sm font-bold text-[#12a483]'>
+        <ProtectedLink href={`/toeic-test/${id}`} className={'w-full rounded-full border border-[#12a483] p-1 text-sm font-bold text-[#12a483]'}>
             Take now
-          </button>
-        </Link>
+        </ProtectedLink>
+
       </div>
     </div>
   );

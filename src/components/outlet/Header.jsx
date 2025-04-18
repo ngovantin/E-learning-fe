@@ -30,7 +30,7 @@ const Header = () => {
           <li className='py-1.5'><Link href='/ai-test-generator'>AI Exam</Link></li>
           <li className='py-1.5'><Link href='/toeic-test'>Toeic</Link></li>
           <li className='py-1.5'><Link href='/blog'>Blog</Link></li>
-          <li className='py-1.5'><Link href='/developing'>Course</Link></li>
+          <li className='py-1.5'><Link href='/course'>Course</Link></li>
         </ul>
         <div className='flex items-center gap-4'>
           <div className='h-5 w-5 md:hidden' onClick={() => setMenu(!menu)}>

@@ -34,7 +34,7 @@ const page = () => {
         <p className='inline-block rotate-12 rounded-full bg-[#12a483] px-4 py-1 font-bold text-white'>Practice</p>
       </div>
       
-      <LearningCategory id={'course'} itemType='Course' categories={['TOEIC', 'IELTS']} href={'/developing'}>
+      <LearningCategory id={'course'} itemType='Course' categories={['TOEIC', 'IELTS']} href={'/course'}>
         <div className='my-9 grid grid-cols-2 justify-between gap-2 gap-y-5 text-left lg:grid-cols-3 xl:grid-cols-4 xl:gap-5 2xl:grid-cols-5'>
           <CourseCard />
           <CourseCard />
