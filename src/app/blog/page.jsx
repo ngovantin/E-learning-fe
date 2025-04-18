@@ -1,7 +1,7 @@
 'use client';
 import BlogCard from '@/components/cards/BlogCard';
 import Loader from '@/components/Loader';
-import ProjectedLink from '@/components/ProtectedLink';
+import ProtectedLink from '@/components/ProtectedLink';
 import useFetch from '@/Hooks/useFetch';
 import ListLayout from '@/layout/ListLayout';
 import { faAngleLeft, faAngleRight, faPen } from '@fortawesome/free-solid-svg-icons';
@@ -35,7 +35,7 @@ const page = () => {
       <ListLayout title={TITLE} description={DESCRIPTION} side='l'>
         
         <div className='flex flex-col gap-y-3 lg:flex-[3.5]'>
-          <ProjectedLink className='bg-[#12a483] text-center py-3 rounded-full font-bold text-white cursor-pointer' href='/write'>New Blog <FontAwesomeIcon icon={faPen}/></ProjectedLink>
+          <ProtectedLink className='bg-[#12a483] text-center py-3 rounded-full font-bold text-white cursor-pointer' href='/write'>New Blog <FontAwesomeIcon icon={faPen}/></ProtectedLink>
           {data?.blogs.map((blog) => (
             <BlogCard key={blog._id} data={blog} />
           ))}
