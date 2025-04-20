@@ -53,8 +53,8 @@ const page = () => {
   });
   return (
     <ListLayout title={TITLE} description={DECSRIPTION}>
-      <div className='mb-5 md:flex md:items-center md:justify-between'>
-        <div className='flex'>
+      <div className='mb-5 md:flex md:items-center md:justify-between gap-y-3'>
+        <div className='flex flex-wrap'>
           {PUBLISHED_YEARS.map((year) => (
             <p
               onClick={() => setPublishedYear(year.value)}
